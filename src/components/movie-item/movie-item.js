@@ -2,8 +2,10 @@ import React from "react";
 import { Pane, Paragraph, Button, majorScale } from "evergreen-ui";
 
 const MovieItem = ({ movie, updateLikeCount }) => {
+  const time = new Date();
+
   return (
-    <Pane border="1px solid green">
+    <Pane border="1px solid #ccc">
       <Pane
         height={100}
         borderBottom="1px solid #ccc"
@@ -13,7 +15,6 @@ const MovieItem = ({ movie, updateLikeCount }) => {
         justifyContent="center"
         textTransform="uppercase"
         fontFamily="Poppins"
-        // font-family: 'Poppins', sans-serif;
         fontWeight={700}
         fontSize={24}
         textAlign="center"
@@ -21,9 +22,13 @@ const MovieItem = ({ movie, updateLikeCount }) => {
         {movie.name}
       </Pane>
       <Pane fontFamily="Poppins">
-        <Paragraph fontFamily="inherit">legrskhtd</Paragraph>
-        <Paragraph fontFamily="inherit">flegrksh</Paragraph>
-        <Paragraph fontFamily="inherit">eag; lrs</Paragraph>
+        <Paragraph fontFamily="inherit">Name: {movie.name}</Paragraph>
+        <Paragraph fontFamily="inherit">
+          Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit{" "}
+        </Paragraph>
+        <Paragraph fontFamily="inherit">
+          Year released: {time.getFullYear()}
+        </Paragraph>
         <Paragraph fontFamily="inherit">Likes: {movie.likes} </Paragraph>
 
         <Pane width="60%" margin="auto">
@@ -32,7 +37,7 @@ const MovieItem = ({ movie, updateLikeCount }) => {
             fontSize="1em"
             type="button"
             width="100%"
-            marginY={majorScale(2)}
+            marginY={majorScale(1)}
             onClick={() => updateLikeCount(movie.id)}
           >
             Like

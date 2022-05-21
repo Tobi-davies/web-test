@@ -36,42 +36,10 @@ const movies = [
 ];
 
 const Home = () => {
-  const [likeNum, setLikeNum] = React.useState(0);
+  const [popularMovie, setPopularMovie] = React.useState({});
   const [movieList, setMovieList] = React.useState(movies);
 
   const updateLikeCount = (id) => {
-    console.log(id);
-    // setMovieList((prev) => prev.filter((e) => (e.id === id ? e.likes + 1 : e)));
-
-    // const index = arr.findIndex(object => {
-    //   return object.id === 2;
-    // }); // 👉️ 1
-
-    // if (index !== -1) {
-    //   arr[index].name = 'John';
-    // }
-
-    // const newArr = arr.map(object => {
-    //   if (object.id === 2) {
-    //     // 👇️ change value of name property
-    //     return {...object, name: 'John'};
-    //   }
-    //   return object;
-    // });
-
-    // setMovieList((prev) =>
-    //   prev.map((e) =>
-    //     e.id === id
-    //       ? {
-    //           id: id,
-    //           name: e.name,
-    //           likes: e.likes++,
-    //         }
-    //       : e
-    //   )
-    // );
-
-    // const existingMovie = movieList.find(e => e.id === id)
     let newArr;
     if (movieList.find((e) => e.id === id)) {
       newArr = movieList.map((e) =>
@@ -79,11 +47,24 @@ const Home = () => {
       );
       setMovieList(newArr);
     }
-
-    // console.log(newArr);
   };
 
-  console.log(movieList);
+  const sortPopularMovie = () => {
+    const likesCount = movieList.map((movie) => movie.likes);
+
+    const max = Math.max(...likesCount);
+
+    const index = likesCount.indexOf(max);
+
+    setPopularMovie(movieList[index]);
+  };
+
+  React.useEffect(() => {
+    if (movieList.every((el) => el.likes === 0)) {
+    } else {
+      sortPopularMovie();
+    }
+  }, [movieList]);
 
   return (
     <Pane>
@@ -95,25 +76,36 @@ const Home = () => {
         <h2>Nolly-Flix</h2>
       </Pane>
       <Pane maxWidth={1000} width="100%" margin="auto">
-        <Paragraph>
+        <Paragraph paddingY={majorScale(3)}>
           The place you find the best movies. Suscription is charged
         </Paragraph>
 
-        <Pane>
-          <Paragraph> View popular movies</Paragraph>
+        {/* <Pane> */}
+        <Pane classNmae="row">
+          <Pane className="col-4">
+            <Paragraph> View popular movies</Paragraph>
+            {Object.keys(popularMovie).length !== 0 ? (
+              <>
+                <MovieItem
+                  movie={popularMovie}
+                  updateLikeCount={updateLikeCount}
+                />
+              </>
+            ) : (
+              <Pane paddingY={majorScale(2)}>
+                <Paragraph>Like movies to make them popular</Paragraph>
+              </Pane>
+            )}
+          </Pane>
         </Pane>
+        {/* </Pane> */}
 
         <Pane>
           <Paragraph>Available movies</Paragraph>
           <div className="row">
             {movieList.map((movie, i) => {
               return (
-                <Pane
-                  className="col-4"
-                  border="1px solid red"
-                  marginBottom={20}
-                  key={i}
-                >
+                <Pane className="col-4" marginBottom={20} key={i}>
                   <MovieItem movie={movie} updateLikeCount={updateLikeCount} />
                 </Pane>
               );
