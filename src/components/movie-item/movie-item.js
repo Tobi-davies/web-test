@@ -21,14 +21,15 @@ const MovieItem = ({ movie, updateLikeCount }) => {
       >
         {movie.name}
       </Pane>
-      <Pane fontFamily="Poppins">
+      <Pane fontFamily="Poppins" padding={8}>
         <Paragraph fontFamily="inherit">Name: {movie.name}</Paragraph>
-        <Paragraph fontFamily="inherit">
+        {/* <Paragraph fontFamily="inherit">
           Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit{" "}
-        </Paragraph>
+        </Paragraph> */}
         <Paragraph fontFamily="inherit">
           Year released: {time.getFullYear()}
         </Paragraph>
+        <Paragraph fontFamily="inherit">Price: {movie.price} USD</Paragraph>
         <Paragraph fontFamily="inherit">Likes: {movie.likes} </Paragraph>
 
         <Pane width="60%" margin="auto">
