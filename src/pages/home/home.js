@@ -55,6 +55,15 @@ const Home = () => {
     }
   };
 
+  //Increases the price after 20 likes
+  const updatePrice = () => {
+    let newList = movieList.map((movie) =>
+      movie.likes >= 20 ? { ...movie, price: movie.price + 10 } : movie
+    );
+
+    // setMovieList(newList);
+  };
+
   const sortPopularMovie = () => {
     const likesCount = movieList.map((movie) => movie.likes);
 
@@ -66,6 +75,8 @@ const Home = () => {
   };
 
   React.useEffect(() => {
+    updatePrice();
+
     if (movieList.every((el) => el.likes === 0)) {
     } else {
       sortPopularMovie();
