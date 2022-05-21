@@ -7,31 +7,37 @@ const movies = [
     id: 1,
     name: "The Redemption",
     likes: 0,
+    price: 10,
   },
   {
     id: 2,
     name: "Africa’s Tech Roots",
     likes: 0,
+    price: 40,
   },
   {
     id: 3,
     name: "The Invisible Man",
     likes: 0,
+    price: 45,
   },
   {
     id: 4,
     name: "The Complicated Project",
     likes: 0,
+    price: 50,
   },
   {
     id: 5,
     name: "Simply Javascript",
     likes: 0,
+    price: 40,
   },
   {
     id: 6,
     name: "The New Web",
     likes: 0,
+    price: 30,
   },
 ];
 
