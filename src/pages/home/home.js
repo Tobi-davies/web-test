@@ -70,7 +70,7 @@ const Home = () => {
     <Pane>
       <Pane
         paddingY={majorScale(1)}
-        paddingX={majorScale(2)}
+        paddingX={majorScale(10)}
         backgroundColor="#B6D0E2"
       >
         <h2>Nolly-Flix</h2>
@@ -81,9 +81,12 @@ const Home = () => {
         </Paragraph>
 
         {/* <Pane> */}
-        <Pane classNmae="row">
+        <Pane classNmae="row" marginBottom={20}>
           <Pane className="col-4">
-            <Paragraph> View popular movies</Paragraph>
+            <Paragraph fontSize={25} marginBottom={8}>
+              {" "}
+              View popular movies
+            </Paragraph>
             {Object.keys(popularMovie).length !== 0 ? (
               <>
                 <MovieItem
@@ -101,7 +104,9 @@ const Home = () => {
         {/* </Pane> */}
 
         <Pane>
-          <Paragraph>Available movies</Paragraph>
+          <Paragraph fontSize={25} marginBottom={8}>
+            Available movies
+          </Paragraph>
           <div className="row">
             {movieList.map((movie, i) => {
               return (

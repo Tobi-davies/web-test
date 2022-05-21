@@ -33,7 +33,8 @@ const MovieItem = ({ movie, updateLikeCount }) => {
 
         <Pane width="60%" margin="auto">
           <Button
-            appearance="success"
+            appearance="primary"
+            intent="success"
             fontSize="1em"
             type="button"
             width="100%"
